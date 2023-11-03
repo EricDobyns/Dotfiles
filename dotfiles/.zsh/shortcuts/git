@@ -1,0 +1,19 @@
+# Git CLI Shortcuts
+
+# Get current status
+alias gs='git status'
+
+# Fetch changes (with prune and append, see https://git-scm.com/docs/git-fetch)
+alias gf='git fetch -p -a'
+
+# Get branches (remote and local, see https://git-scm.com/docs/git-branch)
+alias gb='git branch -a'
+
+# Display git tree (pretty printed, see https://git-scm.com/docs/git-log)
+alias gt='git log --graph --decorate --all'
+
+# Git - Branch Autocomplete
+# Download the following script: curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+# if [ -f ~/.git-completion.bash ]; then
+#   . ~/.git-completion.bash
+# fi

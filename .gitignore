@@ -1,8 +1,9 @@
 # .gitignore
 
+# Miscellaneous
 .DS_Store
 *.log
+tmp/
 
-dotfiles/.zsh/shortcuts/ohana
-dotfiles/.zsh/shortcuts/titanhst
-dotfiles/.zsh/shortcuts/minecraft
+# Private Files
+dotfiles/.zsh/shortcuts/private/

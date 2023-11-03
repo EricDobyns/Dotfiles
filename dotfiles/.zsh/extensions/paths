@@ -1,0 +1,104 @@
+# Path Extensions
+
+#############################
+#  Utilities                #
+#############################
+
+# remove duplicate entries from $PATH
+# zsh uses $path array along with $PATH
+typeset -U PATH path
+
+# Alias to print each PATH entry on a separate line
+alias list_paths='echo -e ${PATH//:/\\n}'
+
+# Function to export a path if not already known
+pathmunge () {
+    case ":${PATH}:" in
+        *:"$1":*)
+            # Path already included
+            ;;
+        *)
+            # Directory does not exist, do not include
+            [ ! -d "$1" ] && return
+
+            # Include after or before system path additions
+            if [ "$2" = "after" ] ; then
+                PATH=$PATH:$1
+            else
+                PATH=$1:$PATH
+            fi
+    esac
+}
+
+
+#############################
+#  Golang                   #
+#############################
+
+# No longer needed since Golang v1.8
+#export GOPATH=$HOME/go
+#pathmunge "$GOPATH/bin"
+
+
+
+#############################
+#  Node                     #
+#############################
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
+#############################
+#  Dotnet                   #
+#############################
+
+# Dotnet & Tools
+#pathmunge /usr/local/share/dotnet
+#pathmunge ~/.dotnet/tools
+
+# Mono
+#pathmunge /Library/Frameworks/Mono.framework/Versions/Current/Commands
+
+
+
+#############################
+#  Swift                    #
+#############################
+
+# Swift for Tensorflow
+# pathmunge "/Library/Developer/Toolchains/swift-latest/usr/bin"
+
+
+
+#############################
+#  Ruby                     #
+#############################
+
+# No longer needed...
+# pathmunge "/opt/homebrew/opt/ruby/bin"
+
+
+
+#############################
+#  Rust                     #
+#############################
+
+# Install docs: https://rustup.rs/
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Cargo
+pathmunge "$HOME/.cargo/bin"
+
+
+
+#############################
+#  Python                   #
+#############################
+
+# Python - Miniconda
+# Install docs: https://docs.conda.io/projects/miniconda/en/latest/
+#pathmunge "~/miniconda3/bin"

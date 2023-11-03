@@ -1,0 +1,46 @@
+#!/bin/zsh
+
+# Description:
+# 	This script will copy the contents of the dotfiles directory to your home folder
+
+# WARNING:
+#	This script will overwrite existing files!
+
+# Clear existing terminal output
+clear
+
+# Copy files and source .zshrc
+function setup_dotfiles() {
+	rsync --exclude ".DS_Store" -avh --no-perms ./dotfiles/ ~
+}
+
+if [[ $1 == "--force" || $1 == "-f" ]]; then
+	setup_dotfiles
+else
+	# Get list of files with changes
+	changes=$(rsync --exclude ".DS_Store" -avh --dry-run --out-format='RSYNC_DELIMITER %n' "$@" ./dotfiles/ ~ | grep RSYNC_DELIMITER | sed 's/RSYNC_DELIMITER //' | grep -vFx './')
+
+	# Get number of files with changes
+	num_lines=$(echo $changes | xargs | wc -l | xargs)
+
+	# Validate number of files with changes
+	if [[ $num_lines == 0 ]]; then
+		clear
+		echo "No changes detected, files are up to date"
+	else
+		# Request permission before writing
+		echo "The following files contain changes and will be updated:\n$changes\n\nWARNING: This action will overwrite the existing files in your home directory."
+		read "REPLY?	 Are you sure? (y/n) "
+		echo ""
+
+		if [[ $REPLY =~ ^[Yy]$ ]]; then
+			clear
+			setup_dotfiles
+			echo "\nFiles successfully updated"
+		fi;
+	fi
+fi;
+
+# Cleanup
+unset setup_dotfiles
+source ~/.zshrc

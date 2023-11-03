@@ -1,0 +1,11 @@
+# network Shortcuts
+
+# Get Remote IP
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# Get Local IP
+alias local_ip="ipconfig getifaddr en0"
+
+# nmap scan network for device ips
+alias scan_home_network='nmap --system-dns -sP 192.168.1.2-30'
+alias scan_network='nmap --system-dns -sP'

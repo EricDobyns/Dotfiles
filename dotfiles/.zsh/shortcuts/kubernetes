@@ -1,0 +1,28 @@
+# Kubernetes CLI Shortcuts
+
+# Namespaces
+alias kns='kubectl config set-context `kubectl config current-context` --namespace'
+alias kgc='k config get-contexts'
+
+# Miscellaneous Commands
+alias k='kubectl'
+alias ku='kubectl'
+alias kg='kubectl get -o wide'
+alias kga='kubectl get --all-namespaces -o wide'
+alias kst='kubectl top node'
+alias kgn='kubectl get nodes -o wide'
+alias kgaa='kubectl get all --all-namespaces'
+alias kgp='kubectl get pods -o wide'
+alias kgpa='kubectl get pods --all-namespaces -o wide'
+alias kgd='kubectl get deployments'
+alias kgda='kubectl get deployments --all-namespaces'
+alias kgda='kubectl get daemonsets'
+alias kgdaa='kubectl get daemonsets --all-namespaces'
+alias kgs='kubectl get services'
+alias kgsa='kubectl get services --all-namespaces'
+alias kgaw='kubectl get all --all-namespaces -o wide'
+alias klimits='kubectl get nodes --no-headers | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+
+# Miscellaneous Port Forwarding
+alias start_openfaas='kubectl port-forward -n openfaas svc/gateway 8080:8080'
+alias start_grafana='kubectl port-forward --namespace monitoring grafana-779c77d895-w6v28 3000'

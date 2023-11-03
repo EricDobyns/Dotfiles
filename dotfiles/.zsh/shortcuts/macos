@@ -1,0 +1,52 @@
+# MacOS CLI Shortcuts
+
+# Reload .zshrc
+alias reload='source ~/.zshrc; clear'
+
+# Clear terminal output
+alias cls='clear'
+
+# List contents vertically by default
+alias ls='ls -1'
+
+# List all contents (long form, human readable)
+alias lsh='ls -lh'
+
+# List all contents (hidden files, long form, human readable)
+alias lsah='ls -lha'
+
+# List contents in a visual tree recursively
+alias lst='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
+
+# List files in a visual tree recursively
+alias lstf='find . -type f | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
+
+# List directories in a visual tree recursively
+alias lstd='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
+
+# Current Directory Size
+alias print_size='du -sh'
+
+# Open terminal at location
+alias terminal='open -a "Terminal" .'
+alias term='terminal'
+
+# Show usb device details
+alias usb_details='ioreg -p IOUSB -l -w 0'
+
+# Show/Hide Desktop
+alias showDesktop='defaults write com.apple.finder CreateDesktop true; killall Finder'
+alias show_desktop='showDesktop'
+alias hideDesktop='defaults write com.apple.finder CreateDesktop false; killall Finder'
+alias hide_desktop='hideDesktop'
+
+# Show/Hide Hidden Files
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
+alias show_files='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
+alias hide_files='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
+
+# Open tmux in terminal by default
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     tmux attach -t default || tmux new -s default
+# fi

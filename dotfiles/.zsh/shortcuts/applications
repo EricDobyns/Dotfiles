@@ -1,0 +1,4 @@
+# Application CLI Shortcuts
+
+# Show Windows 11 Parallels virtual machine
+alias win11="osascript -e $'activate application \"Windows 11\"'"

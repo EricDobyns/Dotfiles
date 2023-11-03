@@ -1,0 +1,6 @@
+# .gitignore_global
+
+*~
+.DS_Store
+Package.resolved
+/node_modules/

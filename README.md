@@ -8,7 +8,7 @@
 source init
 ```
 
-.zshrc is configured to source all files found within the .zsh directory. Files are categorized by extensions and shortcuts.
+The file, ~/.zshrc, is configured to source all files found within the ~/.zsh directory. Files are categorized by extensions and shortcuts.
 
 **Note:** Make sure to add any sensitive files to your .gitignore
 

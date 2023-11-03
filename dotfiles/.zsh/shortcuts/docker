@@ -1,0 +1,5 @@
+# Docker CLI Shortcuts
+
+# Stop and remove all containers
+alias dockerRemoveAllContainers='docker stop $(docker ps -aq) && docker rm $(docker ps -aq)'
+alias docker_remove_all_containers='dockerRemoveAllContainers'

@@ -1,0 +1,11 @@
+# AWS CLI Shortcuts
+
+# Commonly used shortcuts
+# https://www.bluematador.com/learn/aws-cli-cheatsheet
+
+# Print s3 bucket size
+# Usage:
+#    s3_size <bucket-url>
+function s3_size() {
+    aws s3 ls --summarize --human-readable --recursive s3://"$1" | tail -1;
+}
